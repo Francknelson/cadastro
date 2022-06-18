@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Cadastro.Models.DtoUsuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="card">
+	<div class="card-header">
+		<div class="row text-end">
+			<div class="col-7">
+				<h3>Lista de Usuários</h3>
+			</div>
+			<div class="col-5">
+				<a asp-action="Create" class="btn btn-success" ><i class="fa fa-save"></i> <span>Adicionar usuário</span></a>
+			</div>
+		</div>
+	</div>
+	<div class="card-body">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Email</th>
+					<th scope="col">Grau</th>
+					<th scope="col" class="text-end">Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model) {	
+						<tr>
+							<td>
+								<a>@item.id</a>
+							</td>
+							<td>
+								<a>@item.nome</a>
+							</td>
+							<td>
+								<a>@item.email</a>
+							</td>
+							<td>
+								<a>@item.grau</a>
+							</td>
+							<td class="text-end">
+								<a asp-action="Edit" asp-route-id="@item.id" class="edit"><i class="fa fa-pencil" data-toggle="tooltip" title="Edit"></i></a> 
+								<a asp-action="Details" asp-route-id="@item.id" class="details"><i class="fa fa-info-circle" data-toggle="tooltip" title="Details"></i></a>
+								<a asp-action="Delete" asp-route-id="@item.id"  class="delete"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i> </a>
+							</td>
+							
+						</tr>
+						}
+			</tbody>
+		</table>
+	</div>
+	<div class="card-footer">
+		<div class="clearfix">
+			<div class="hint-text">Mostrando todos os resultados.</div>
+		</div>
+	</div>
+</div>
